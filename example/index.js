@@ -64,6 +64,7 @@ class Demo extends Component {
             <ModalDropdown style={styles.dropdown_2}
                            textStyle={styles.dropdown_2_text}
                            dropdownStyle={styles.dropdown_2_dropdown}
+                           triangleStyle={styles.triangle_2}
                            options={DEMO_OPTIONS_2}
                            renderRow={this._dropdown_2_renderRow.bind(this)}
                            renderSeparator={(sectionID, rowID, adjacentRowHighlighted) => this._dropdown_2_renderSeparator(sectionID, rowID, adjacentRowHighlighted)}
@@ -270,6 +271,9 @@ const styles = StyleSheet.create({
     borderColor: 'cornflowerblue',
     borderWidth: 2,
     borderRadius: 3,
+  },
+  triangle_2:{
+    borderBottomColor: 'green'
   },
   dropdown_2_row: {
     flexDirection: 'row',

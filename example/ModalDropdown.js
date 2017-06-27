@@ -41,6 +41,7 @@ export default class ModalDropdown extends Component {
     dropdownStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
     dropdownTextStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
     dropdownTextHighlightStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
+    triangleStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object, PropTypes.array]),
 
     adjustFrame: PropTypes.func,
     renderRow: PropTypes.func,
@@ -180,6 +181,7 @@ export default class ModalDropdown extends Component {
   _renderModal() {
     if (this.state.showDropdown && this._buttonFrame) {
       let frameStyle = this._calcPosition();
+      let triangle = this._calcTrianglePosition();
       let animationType = this.props.animated ? 'fade' : 'none';
       return (
         <Modal animationType={animationType}
@@ -190,6 +192,7 @@ export default class ModalDropdown extends Component {
                                     disabled={!this.state.showDropdown}
                                     onPress={this._onModalPress.bind(this)}>
             <View style={styles.modal}>
+              <View style={[styles.triangle, triangle , this.props.triangleStyle]}/>
               <View style={[styles.dropdown, this.props.dropdownStyle, frameStyle]}>
                 {this.state.loading ? this._renderLoading() : this._renderDropdown()}
               </View>
@@ -198,6 +201,17 @@ export default class ModalDropdown extends Component {
         </Modal>
       );
     }
+  }
+
+  _calcTrianglePosition(){
+    let dimensions = Dimensions.get('window');
+    let windowWidth = dimensions.width;
+    let rightSpace = windowWidth - this._buttonFrame.x;
+    var style = {
+      top: this._buttonFrame.y + this._buttonFrame.h,
+      left: this._buttonFrame.x + this._buttonFrame.w - 20
+    }
+    return style
   }
 
   _calcPosition() {
@@ -215,7 +229,7 @@ export default class ModalDropdown extends Component {
 
     var style = {
       height: dropdownHeight,
-      top: showInBottom ? this._buttonFrame.y + this._buttonFrame.h : Math.max(0, this._buttonFrame.y - dropdownHeight),
+      top: showInBottom ? this._buttonFrame.y + this._buttonFrame.h + 12 : Math.max(0, this._buttonFrame.y - dropdownHeight),
     };
 
     if (showInLeft) {
@@ -412,5 +426,16 @@ const styles = StyleSheet.create({
   separator: {
     height: StyleSheet.hairlineWidth,
     backgroundColor: 'lightgray'
+  },
+  triangle: {
+    position: 'absolute',
+    width: 0,
+    height: 0,
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderLeftWidth: 6,
+    borderRightWidth: 6,
+    borderBottomWidth: 12,
+    borderBottomColor: 'black'
   }
 });
