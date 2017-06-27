@@ -5,8 +5,7 @@ A react-native dropdown fork from [sohobloo/react-native-modal-dropdown](https:/
 ## Install
 
 ```
-npm install git+https://github.com/phonechan/react-native-modal
--dropdown.git --save
+npm install git+https://github.com/phonechan/react-native-modal-dropdown.git --save
 ```
 
 ## New Features
