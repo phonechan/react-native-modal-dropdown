@@ -1,3 +1,21 @@
+# Attention
+
+fork from [sohobloo/react-native-modal-dropdown](https://github.com/sohobloo/react-native-modal-dropdown)
+
+## New Features
+
+- Dropdown Menu Triangle
+
+![](docs/demo_0.png)
+
+## New Props
+
+Prop                | Type     | Optional | Default   | Description
+------------------- | -------- | -------- | --------- | -----------
+triangleStyle       | object   | Yes      |           | Style of the Dropdown Menu Triangle.
+
+
+
 [![npm version](https://badge.fury.io/js/react-native-modal-dropdown.svg)](https://badge.fury.io/js/react-native-modal-dropdown)
 
 # react-native-modal-dropdown
